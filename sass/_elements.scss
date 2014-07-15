@@ -1,0 +1,117 @@
+
+//////////////
+// Elements //
+//////////////
+
+
+/**
+ * element
+ *
+ * Defines css rules for an element :
+ *  - flex-grow
+ *  - flex-basis
+ *
+ * Defines max-width class.
+ *
+ * @param {number} flex     Flex-grow value
+ * @param {number} columns  Grid columns number to calculate flex-basis percentage
+ */
+@mixin element ($flex, $columns) {
+
+    @include prefixr(flex-grow, $flex);
+    @include prefixr(flex-basis, percentage($flex / $columns));
+
+    &.#{ $max } {
+        max-width : percentage($flex / $columns);
+    }
+}
+
+
+/**
+ * elementsLoop
+ *
+ * Generates all element classes or attributes
+ * Called for each breakpoints + default
+ * 
+ * @param {number} n           Grid columns number
+ * @param {string} container   Grid name
+ * @param {string} attr       Optionnal. Html attribute to use instead of class.
+ *
+ * @author Guillaume
+ */
+@mixin elementsLoop ($n, $container, $attr: null) {
+
+    //For each columns number
+    @for $i from 1 through $n {
+
+        $elem : $elementPrefix + $element + $of + $i + $columns;
+
+        //If no $attr
+        //Define a class
+        @if $attr == null {
+
+            .#{ $container } > .#{ $elem } {
+                @include element($i, $n);
+            }
+        
+        //If there is an $attr
+        //Use it instead of a class
+        } @else {
+
+            .#{ $container } > [#{ $attr }][#{ $attr }~="#{ $elem }"],
+            [#{ $attr }][#{ $attr }~="#{ $container }"] > [#{ $attr }][#{ $attr }~="#{ $elem }"] {
+                @include element($i, $n);
+            }
+            
+        }
+
+    }
+
+}
+
+
+/**
+ * elements
+ *
+ * Defines all elements classes or attrs for one grid
+ * And defines default element behavior
+ *
+ * @param {number} n           Grid columns number
+ * @param {string} container   Grid name
+ *
+ * @author Guillaume
+ */
+@mixin elements ($n, $container) {
+    
+    /*
+        Default for all element :
+        - flex-grow  : 1
+        - flew-basis : (1 / $n * 100) %
+     */
+    .#{ $container } > * {
+        @include element(1, $n);
+    }
+    @each $breakName, $breakValue in $gridBreakpoints {
+        
+        @include MQ($breakValue) {
+            [#{ $breakName }][#{ $breakName }~="#{ $container }"] > * {
+                @include element(1, $n);
+            }
+        }
+
+    }
+
+    /*
+        Define each column class / attr
+     */
+    @include elementsLoop($n, $container);
+    
+    @each $breakName, $breakValue in $gridBreakpoints {
+
+        @include MQ($breakValue) {
+            @include elementsLoop($n, $container, $breakName);
+        }
+            
+    }
+}
+

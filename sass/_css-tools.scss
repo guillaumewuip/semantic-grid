@@ -1,0 +1,60 @@
+
+/**
+ * CSS Mixins
+ *
+ * @author Guillaume
+ */
+
+
+@mixin display-flex () {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flexContainer () {
+    @include display-flex();
+    @include prefixr(flex-wrap, wrap);
+    @include prefixr(flex-direction, row);
+}
+
+
+
+
+
+///////////
+// Other //
+///////////
+
+
+
+/**
+ * display block/none
+ */
+.#{ $element + $displayed} {
+    display: block;
+}
+.#{ $element + $hidden} {
+    display: none
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+        [#{ $breakName }][#{ $breakName }~="#{ $element + $displayed}"] {
+            display: block;
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $element + $hidden}"] {
+            display: none
+        }
+
+    }
+
+}
+
+
+
+

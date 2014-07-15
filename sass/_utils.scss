@@ -1,0 +1,32 @@
+
+/**
+ * MQ
+ *
+ * Make content avaliable only for media-query
+ * "#{ gridRootRule } and #{ what }"
+ *
+ * @param {string} what Media-query rule
+ * @author Guillaume
+ */
+@mixin MQ($what) {
+
+    @media #{ $what } {
+        @content;
+    }
+}
+
+/**
+ * prefixr
+ *
+ * @param {string} prop
+ * @param {string|number|color} value
+ *
+ * @author Guillaume
+ */
+@mixin prefixr($prop, $value) {
+    -webkit-#{$prop}: $value;
+       -moz-#{$prop}: $value;
+         -o-#{$prop}: $value;
+        -ms-#{$prop}: $value;
+            #{$prop}: $value;
+}

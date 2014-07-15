@@ -1,0 +1,107 @@
+
+//////////////
+// Language //
+//////////////
+
+$grid                   : grille;
+$gridPrefix             : une;
+
+$column                 : colonne;
+$row                    : ligne;
+
+$element                : element;
+$elementPrefix          : un;
+
+$margin                 : marge;
+$marginPrefix           : une;
+
+$pluralPrefix           : des;
+$pluralSuffix           : s;
+
+$at                     : a;
+$of                     : de;
+$with                   : avec;
+$from                   : de;
+$to                     : en;
+$in                     : en;
+
+$top                    : haut;
+$bottom                 : bas;
+$left                   : gauche;
+$right                  : droite;
+
+$horizontally           : horizontalement;
+$vertically             : verticalement;
+
+$atStart                : audebut;
+$atEnd                  : alafin;
+
+$onBaseline             : surletexte;
+
+$aligned                : aligne;
+$centered               : centre;
+$justified              : justifie;
+$spaced                 : espace;
+
+$max                    : maximum;
+$full                   : pleine;
+
+$height                 : taille;
+
+$first                  : first;
+
+$displayed              : visible; 
+$hidden                 : cache; 
+
+
+/**
+ * Computed
+ */
+
+$columns : $column + $pluralSuffix;
+$rows : $row + $pluralSuffix;
+$elements : $element + $pluralSuffix;
+$margins : $margin + $pluralSuffix;
+
+
+
+///////////
+// Grids //
+///////////
+
+$grids : (2, 10, 12, 16);
+
+
+/////////////////
+// Breakpoints //
+/////////////////
+
+/**
+ * gridBreakpoints
+ *
+ * Media-queries breakpoints
+ * 
+ * @type {map} 
+    (
+        "breakpointName": "media-query rule"
+    )
+ */
+$gridBreakpoints : (
+
+    "smartphones"  : "all and (max-width: 767px)",
+    "tablettes"    : "all and (min-width: 767px) and (max-width: 991px)",
+    "ecransMoyens" : "all and (min-width: 992px) and (max-width: 1199px)",
+    "grandEcrans"  : "all and (min-width: 1200px)",
+
+    "iphone5" : "all and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: \"40/71\")"
+
+);
+
+/**
+ * gridRootRule
+ *
+ * Root media-querie
+ * 
+ * @type {string}
+ */
+$gridRootRule : "all";

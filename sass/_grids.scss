@@ -1,0 +1,310 @@
+
+
+
+@mixin flexGrid ($container) {
+
+    //Default
+    .#{ $container } {
+       @include flexContainer();
+    }
+    //For all breakpoints
+    @each $breakName, $breakValue in $gridBreakpoints {
+        @include MQ($breakValue) {
+
+            [#{ $breakName }][#{ $breakName }~="#{ $container }"] {
+                @include flexContainer();
+            } 
+        }
+
+    }
+}
+
+
+
+/**
+ * For each grids
+ */
+@each $i in $grids {
+
+    @debug "Grid " + $i;
+
+    /**
+     * Grid container
+     *
+     * Custom name for each grid
+     */
+    $container: $gridPrefix + $grid + $of + $i + $columns;
+
+    //flex-box
+    @include flexGrid($container);
+
+    //Elements
+    @include elements($i, $container);
+
+    //Margins
+    @include margins($i, $container);
+
+}
+
+
+
+
+/**
+ * Flex classes
+ */
+
+
+/**
+ * flex-direction
+ *
+ * On grid container
+ *
+ * - in columns
+ *    - from top to bottom
+ *    - from bottom to top
+ * - in rows 
+ *   - from left to right (default)
+ *   - from right to left
+ */
+
+.#{ $elements + $in + $columns } {
+    .#{ $from + $top + $to + $bottom } {
+        @include prefixr(flex-direction, column);
+    }
+    .#{ $from + $bottom + $to + $top } {
+        @include prefixr(flex-direction, column-reverse);
+    }
+}
+.#{ $elements + $in + $rows } {
+    .#{ $from + $left + $to + $right } {
+        @include prefixr(flex-direction, column); //default
+    }
+    .#{ $from + $right + $to + $left } {
+        @include prefixr(flex-direction, column-reverse);
+    }
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $in + $columns }"] {
+            [#{ $breakName }][#{ $breakName }~=".#{ $from + $top + $to + $bottom }"] {
+                @include prefixr(flex-direction, column);
+            }
+            [#{ $breakName }][#{ $breakName }~=".#{ $from + $bottom + $to + $top }"] {
+                @include prefixr(flex-direction, column-reverse);
+            }
+        }
+        [#{ $breakName }][#{ $breakName }~=".#{ $elements + $in + $rows }"] {
+            [#{ $breakName }][#{ $breakName }~=".#{ $from + $left + $to + $right }"] {
+                @include prefixr(flex-direction, column); //default
+            }
+            [#{ $breakName }][#{ $breakName }~=".#{ $from + $right + $to + $left }"] {
+                @include prefixr(flex-direction, column-reverse);
+            }
+        }
+    }
+}
+
+
+/**
+ * flex-wrap
+ *
+ * On grid container
+ * 
+ * - first element at container start (default)
+ * - first element at container end
+ */
+
+.#{ $first + $element + $atStart} {
+    @include prefixr(flex-wrap, wrap); //default
+}
+.#{ $first + $element + $atEnd} {
+    @include prefixr(flex-wrap, wrap-reverse);
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+
+        [#{ $breakName }][#{ $breakName }~="#{ $first + $element + $atStart}"] {
+            @include prefixr(flex-wrap, wrap); //default
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $first + $element + $atEnd}"] {
+            @include prefixr(flex-wrap, wrap-reverse);
+        }
+    }
+}
+
+
+/**
+ * justify-content (horizontaly)
+ *
+ * On grid container
+ *
+ * - align at left (default)
+ * - align at right
+ * - centered
+ * - justified
+ * - spaced
+ */
+
+.#{ $horizontally + $aligned + $at + $left } {
+    @include prefixr(justify-content, flex-start); //default
+}
+.#{ $horizontally + $aligned + $at + $right } {
+    @include prefixr(justify-content, flex-end);
+}
+.#{ $horizontally + $centered } {
+    @include prefixr(justify-content, center);
+}
+.#{ $horizontally + $justified } {
+    @include prefixr(justify-content, space-between);
+}
+.#{ $horizontally + $spaced } {
+    @include prefixr(justify-content, space-around);
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+
+        [#{ $breakName }][#{ $breakName }~="#{ $horizontally + $aligned + $at + $left }"] {
+            @include prefixr(justify-content, flex-start);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $horizontally + $aligned + $at + $right }"] {
+            @include prefixr(justify-content, flex-end);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $horizontally + $centered }"] {
+            @include prefixr(justify-content, center);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $horizontally + $justified }"] {
+            @include prefixr(justify-content, space-between);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $horizontally + $spaced }"] {
+            @include prefixr(justify-content, space-around);
+        }
+    }
+}
+
+
+/**
+ * align-items (vertically)
+ *
+ * On grid container
+ * Or on a element to override the default alignement
+ *
+ * - to top
+ * - to bottom
+ * - centered
+ * - full height (default)
+ * - on baseline
+ */
+
+.#{ $elements + $vertically + $aligned + $to + $top } {
+    @include prefixr(align-items, flex-start);
+    @include prefixr(align-self, flex-start);
+}
+.#{ $elements + $vertically + $aligned + $to + $bottom } {
+    @include prefixr(align-items, flex-end);
+    @include prefixr(align-self, flex-end);
+}
+.#{ $elements + $vertically + $centered } {
+    @include prefixr(align-items, center);
+    @include prefixr(align-self, center);
+}
+.#{ $elements + $full + $height } {
+    @include prefixr(align-items, stretch); //default
+    @include prefixr(align-self, stretch); //default
+}
+.#{ $elements + $aligned + $onBaseline } {
+    @include prefixr(align-items, baseline);
+    @include prefixr(align-self, baseline);
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $vertically + $aligned + $to + $top }"] {
+            @include prefixr(align-items, flex-start);
+            @include prefixr(align-self, flex-start);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $vertically + $aligned + $to + $bottom }"] {
+            @include prefixr(align-items, flex-end);
+            @include prefixr(align-self, flex-end);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $vertically + $centered }"] {
+            @include prefixr(align-items, center);
+            @include prefixr(align-self, center);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $full + $height }"] {
+            @include prefixr(align-items, stretch); //default
+            @include prefixr(align-self, stretch); //default
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $elements + $aligned + $onBaseline }"] {
+            @include prefixr(align-items, baseline);
+            @include prefixr(align-self, baseline);
+        }
+    }
+}
+
+
+
+/**
+ * align-content
+ *
+ * On grid container
+ *
+ * - to top 
+ * - to bottom
+ * - centered
+ * - full height (default)
+ * - vertically justified
+ * - vertically spaced
+ */
+
+.#{ $grid + $vertically + $aligned + $to + $top } {
+    @include prefixr(align-content, flex-start);
+}
+.#{ $grid + $vertically + $aligned + $to + $bottom } {
+    @include prefixr(align-content, flex-end);
+}
+.#{ $grid + $vertically + $centered } {
+    @include prefixr(align-content, center);
+}
+.#{ $grid + $full + $height } {
+    @include prefixr(align-content, stretch); //default
+}
+.#{ $grid + $vertically + $justified } {
+    @include prefixr(align-content, space-between);
+}
+.#{ $grid + $vertically + $spaced } {
+    @include prefixr(align-content, space-around);
+}
+
+@each $breakName, $breakValue in $gridBreakpoints {
+
+    @include MQ($breakValue) {
+
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $vertically + $aligned + $to + $top }"] {
+            @include prefixr(align-content, flex-start);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $vertically + $aligned + $to + $bottom }"] {
+            @include prefixr(align-content, flex-end);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $vertically + $centered }"] {
+            @include prefixr(align-content, center);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $full + $height }"] {
+            @include prefixr(align-content, stretch); //default
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $vertically + $justified }"] {
+            @include prefixr(align-content, space-between);
+        }
+        [#{ $breakName }][#{ $breakName }~="#{ $grid + $vertically + $spaced }"] {
+            @include prefixr(align-content, space-around);
+        }
+    }
+}
