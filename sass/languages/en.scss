@@ -54,3 +54,17 @@ $first                  : first;
 
 $displayed              : displayed; 
 $hidden                 : hidden; 
+
+
+/////////////////
+// Breakpoints //
+/////////////////
+
+$gridBreakpoints : (
+
+    "smartphones"   : "all and (max-width: 767px)",
+    "tablets"       : "all and (min-width: 767px) and (max-width: 991px)",
+    "mediumScreens" : "all and (min-width: 992px) and (max-width: 1199px)",
+    "bigScreens"    : "all and (min-width: 1200px)"
+
+);

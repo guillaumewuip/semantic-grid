@@ -54,3 +54,18 @@ $first                  : first;
 
 $displayed              : display; 
 $hidden                 : hidden; 
+
+
+
+/////////////////
+// Breakpoints //
+/////////////////
+
+$gridBreakpoints : (
+
+    "xs"   : "all and (max-width: 767px)",
+    "sm"       : "all and (min-width: 767px) and (max-width: 991px)",
+    "md" : "all and (min-width: 992px) and (max-width: 1199px)",
+    "lg"    : "all and (min-width: 1200px)"
+
+)
