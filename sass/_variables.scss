@@ -41,12 +41,3 @@ $gridBreakpoints : (
     "bigScreens"    : "all and (min-width: 1200px)"
 
 ) !default;
-
-/**
- * gridRootRule
- *
- * Root media-querie
- * 
- * @type {string}
- */
-$gridRootRule : "all";
