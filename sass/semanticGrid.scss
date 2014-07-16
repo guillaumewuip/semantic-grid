@@ -3,6 +3,14 @@
 // SemanticGrid //
 //////////////////
 
+
+// 1. Import language
+@import 'languages/fr';
+
+// 2. OPTIONNAL. Add your custom $grids list
+
+// 3. Import semanticGrid partials
+
 @import 'variables';
 @import 'utils';
 @import 'css-tools';
