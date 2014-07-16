@@ -4,6 +4,17 @@
 //////////////////
 
 
+
+/**
+ * SemanticGrid
+ *
+ * First grid to be semantic, fully customizable and flex-box based.
+ * 
+ * @see https://github.com/guillaumewuip/semantic-grid
+ */
+
+
+
 // 1. Import language
 @import 'languages/en';
 
@@ -11,7 +22,6 @@
 //$grids : (2, 10, 16, 42); //default to (10, 12, 16)
 
 // 3. Import semanticGrid partials
-
 @import 'variables';
 @import 'utils';
 @import 'css-tools';
