@@ -15,6 +15,14 @@ $margins : $margin + $pluralSuffix;
 // Grids //
 ///////////
 
+/**
+ * $grids
+ *
+ * What grids to create.
+ * Default to three lists (10, 12, and 16 columns wide)
+ * 
+ * @type {list}
+ */
 $grids : (10, 12, 16) !default;
 
 

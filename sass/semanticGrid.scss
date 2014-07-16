@@ -5,9 +5,10 @@
 
 
 // 1. Import language
-@import 'languages/fr';
+@import 'languages/en';
 
 // 2. OPTIONNAL. Add your custom $grids list
+//$grids : (2, 10, 16, 42); //default to (10, 12, 16)
 
 // 3. Import semanticGrid partials
 
