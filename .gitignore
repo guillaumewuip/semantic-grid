@@ -4,3 +4,6 @@ node_modules
 
 *.sublime-project
 *.sublime-workspace
+
+sass/compileLanguages
+css/lang-*
