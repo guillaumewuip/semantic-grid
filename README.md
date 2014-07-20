@@ -106,7 +106,7 @@ So, why can't we keep this when building html ?
 
 
 
-## Flex-blox based
+## Flex-box based
 
 semanticGrid is flex-box based.     
 Flex-box css properties allow us to easily create grid elements, manage height and width, horizontal and vertical positions, white-space and so on.
