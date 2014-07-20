@@ -121,8 +121,8 @@ Custom device behavior is define by giving an attribute.
 
 ```html
 <div 
-    class="anelementof10columns max elementverticalyalignedtobottom" <!-- everywhere except smartphones -->
-    smartphones="anelementof12columns elementverticalyalignedtotop" <!-- only on smartphones -->
+    class="anelementof10columns max elementverticalyalignedtobottom"
+    smartphones="anelementof12columns elementverticalyalignedtotop"
 ></div>
 ```
 
@@ -272,4 +272,105 @@ There is two ways to specify margins :
 
 # Build your own
 
+semanticGrid is built with [SASS](http://sass-lang.com). Here are scss files used to compile semanticGrid.css :
 
+```
+├── Gruntfile.js
+├── css
+│   └── semanticGrid.css
+└── sass
+    ├── _css-tools.scss
+    ├── _elements.scss
+    ├── _grids.scss
+    ├── _margins.scss
+    ├── _utils.scss
+    ├── _variables.scss
+    ├── languages
+    │   ├── en.scss
+    │   ├── fr.scss
+    │   └── pro.scss
+    └── semanticGrid.scss
+```
+
+In order to built semanticGrid with your own language, simply add `sass/languages/myLanguage.scss` and defines all these variables and add breakpoints :
+
+```scss
+
+// Default semanticGrid values in sass/languages/en.scss
+
+//////////////
+// Language //
+//////////////
+
+//English
+
+$grid                   : grid;
+$gridPrefix             : a;
+
+$column                 : column;
+$row                    : row;
+
+$element                : element;
+$elementPrefix          : an;
+
+$margin                 : margin;
+$marginPrefix           : a;
+
+$pluralPrefix           : "";
+$pluralSuffix           : s;
+
+$at                     : at;
+$of                     : of;
+$with                   : with;
+$from                   : from;
+$to                     : to;
+$in                     : in;
+
+$top                    : top;
+$bottom                 : bottom;
+$left                   : left;
+$right                  : right;
+
+$horizontally           : horizontally;
+$vertically             : vertically;
+
+$atStart                : atstart;
+$atEnd                  : atend;
+
+$onBaseline             : onbaseline;
+
+$aligned                : aligned;
+$centered               : centered;
+$justified              : justified;
+$spaced                 : spaced;
+
+$max                    : max;
+$full                   : full;
+
+$height                 : height;
+
+$first                  : first;
+
+$displayed              : displayed; 
+$hidden                 : hidden; 
+
+
+/////////////////
+// Breakpoints //
+/////////////////
+
+$gridBreakpoints : (
+
+    "smartphones"   : "all and (max-width: 767px)",
+    "tablets"       : "all and (min-width: 767px) and (max-width: 991px)",
+    "mediumScreens" : "all and (min-width: 992px) and (max-width: 1199px)",
+    "bigScreens"    : "all and (min-width: 1200px)"
+
+);
+
+```
+
+
+In `sass/semanticGrid.scss`, simply udpate the language import with `@import 'languages/myLanguage;'`.
+
+Then, compile sass with the command `npm install; grunt`.
