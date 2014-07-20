@@ -29,6 +29,23 @@ Imagine if designers and developpers could speak the same language when creating
 
 *Work in progress ...*
 
+### Documentation
+
+- [Get started](#get-started)
+- [Principles](#principles)
+    - [Be semantic](#be-semantic)
+    - [Flex-blox based](#flex-box-based)
+    - [Choose your version or build your own !](#choose-your-version-or-build-your-own-)
+- [Grid system](#grid-system)
+    - [Devices](#devices)
+    - [Grid](#grid)
+    - [Elements](#elements)
+    - [Margins](#margins)
+- [Build your own](#build-your-own)
+
+
+
+
 # Get started
 
 Include the `semanticGrid.css` file.
@@ -55,6 +72,8 @@ Add margins.
     <div class="anelementsof8columns withmarginsof4columns"></div>
 </div>
 ```
+
+
 
 
 # Principles
@@ -87,11 +106,10 @@ So, why can't we keep this when building html ?
 
 
 
-
 ## Flex-blox based
 
 semanticGrid is flex-box based.     
-Flex-box allow us to easily create grid elements, manage height and width, horizontal and vertical positions, white-space and so on.
+Flex-box css properties allow us to easily create grid elements, manage height and width, horizontal and vertical positions, white-space and so on.
 
 Flex-box grids are not supported by old browsers. Yet semanticGrid play a real role at experiementing flex-box, learning grid logic, and building production-ready grids when compatibility is not a constraint.
 
@@ -106,9 +124,10 @@ Go further on flex-box with :
 
 semanticGrid is build with [SASS](http://sass-lang.com) and is fully customizable.
 
-We already offer you differents versions (english, french, pro). [Download the one you prefer]().
+We already offer you differents versions (english, french, pro). [Download the one you prefer](https://github.com/guillaumewuip/semantic-grid/releases).
 
-Please check [Build your own]() section to build your own grid system, with your own custon language.
+Please check [Build your own](#build-your-own) section to build your own grid system, with your own custom language.
+
 
 
 
@@ -140,7 +159,7 @@ By default, semanticGrid comes with this devices detection :
 
 ## Grid
 
-Define a grid. By default, semanticGrids comes with 10, 12 and 16 columns wide grids. [Add one]() if you need to !
+Define a grid. By default, semanticGrids comes with 10, 12 and 16 columns wide grids. [Add one](#build-your-own) if you need to !
 
 ```html
 <div class="agridof10columns"></div>
@@ -270,6 +289,9 @@ There is two ways to specify margins :
 ```
 
 
+
+
+
 # Build your own
 
 semanticGrid is built with [SASS](http://sass-lang.com). Here are scss files used to compile semanticGrid.css :
@@ -292,7 +314,7 @@ semanticGrid is built with [SASS](http://sass-lang.com). Here are scss files use
     └── semanticGrid.scss
 ```
 
-In order to built semanticGrid with your own language, simply add `sass/languages/myLanguage.scss` and defines all these variables and add breakpoints :
+In order to built semanticGrid with your own language, simply add `sass/languages/myLanguage.scss` and defines all these variables and add breakpoints if you need to :
 
 ```scss
 
@@ -371,6 +393,42 @@ $gridBreakpoints : (
 ```
 
 
-In `sass/semanticGrid.scss`, simply udpate the language import with `@import 'languages/myLanguage;'`.
+In `sass/semanticGrid.scss`, simply udpate the language import with `@import 'languages/myLanguage';` and add your custom grid by adding `$grids` variable.
 
-Then, compile sass with the command `npm install; grunt`.
+```scss
+//sass/semantic.scss
+
+//////////////////
+// SemanticGrid //
+//////////////////
+
+
+
+/**
+ * SemanticGrid
+ *
+ * First grid to be semantic, fully customizable and flex-box based.
+ * 
+ * @see https://github.com/guillaumewuip/semantic-grid
+ */
+
+
+
+// 1. Import language
+@import 'languages/en';
+
+// 2. OPTIONNAL. Add your custom $grids list
+//$grids : (2, 10, 16, 42); //default to (10, 12, 16)
+
+// 3. Import semanticGrid partials
+@import 'variables';
+@import 'utils';
+@import 'css-tools';
+@import 'elements';
+@import 'margins';
+@import 'grids';
+```
+
+Then, [compile SASS](http://sass-lang.com/install) with the command `npm install; grunt` if you have node and npm installed.
+
+That's it ! You've built your own grid system !
