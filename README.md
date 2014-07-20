@@ -34,7 +34,7 @@ Imagine if designers and developpers could speak the same language when creating
 - [Get started](#get-started)
 - [Principles](#principles)
     - [Be semantic](#be-semantic)
-    - [Flex-blox based](#flex-box-based)
+    - [Flex-box based](#flex-box-based)
     - [Choose your version or build your own !](#choose-your-version-or-build-your-own-)
 - [Grid system](#grid-system)
     - [Devices](#devices)
