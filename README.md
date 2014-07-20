@@ -77,7 +77,7 @@ So, why can't we keep this when building html ?
 ```html
 <div class="agridof12columns horizontallycentered">
     <div 
-        class"anelementof10columns"
+        class="anelementof10columns"
         tablets="anelementof8columns"
         mediumScreens="..."
         bigScreens="..."
@@ -117,14 +117,12 @@ Please check [Build your own]() section to build your own grid system, with your
 semanticGrid works with html classes and attributes.
 
 Default behavior is define by giving a class.
-Custom device behavior is define by giving an attributes.
+Custom device behavior is define by giving an attribute.
 
 ```html
 <div 
-    <!-- everywhere except smartphones -->
-    class="anelementof10columns max elementverticalyalignedtobottom" 
-    <!-- only on smartphones -->
-    smartphones="anelementof12columns elementverticalyalignedtotop" 
+    class="anelementof10columns max elementverticalyalignedtobottom" <!-- everywhere except smartphones -->
+    smartphones="anelementof12columns elementverticalyalignedtotop" <!-- only on smartphones -->
 ></div>
 ```
 
@@ -185,7 +183,6 @@ There is some optionnal classes you could add to the grid container :
 Define an element. An element can take be as many columns wide as his parent grid is.
 
 ```html
-
 <div class="agridof10columns">
     <div class="anelementof1columns"></div>
     <div class="anelementof2columns"></div>
@@ -198,8 +195,6 @@ Define an element. An element can take be as many columns wide as his parent gri
     <div class="anelementof9columns"></div>
     <div class="anelementof10columns"></div>
 </div>
-
-
 ```
 
 By default, an element will took the maximum columns he can. Add `.max` class to set his max width to the number of column given. Example :
@@ -227,7 +222,6 @@ By default, an element will took the maximum columns he can. Add `.max` class to
     </div>
     <div class="anelementof16columns"></div>
 </div>
-
 ```
 
 
@@ -246,6 +240,35 @@ Use these classes to override the default grid vertical alignement for the eleme
 
 
 ## Margins
+
+Elements can have left and right margins. Margins are at least one column wide.
+
+There is two ways to specify margins :
+
+- add `.withmargins` class.
+    - add left margin with `.atleftof2columns` by example
+    - add right margin with `.atrightof4columns` by example
+- add `.widthmarginsof2columns` to add 2 columns right and left margin at once.
+
+
+```html
+ <div class="agridof16columns">
+    <div class="anelementof8columns withmargins atleftof2columns"></div>
+    <div class="anelementof4columns withmargins atleftof2columns"></div>
+</div>
+
+ <div class="agridof10columns">
+    <div class="anelementof3columns max withmargins atleftof2columns atrightof3columns"></div>
+</div>
+
+ <div class="agridof16columns g">
+    <div class="anelementof8columns withmarginsof4columns ">
+        It's centered 
+        (same as .horizontallycentered > .anelementof8columns.max.)
+    </div>
+</div>
+```
+
 
 # Build your own
 
