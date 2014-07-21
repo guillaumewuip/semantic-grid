@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
 
     var sassOptions = { 
-        sourcemap : true,
+        sourcemap : false,
         style     : 'compressed'
     };
 
