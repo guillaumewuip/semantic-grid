@@ -79,7 +79,10 @@
     
     @include marginsLoop($n, $container);
     
-    @each $breakName, $breakValue in $gridBreakpoints {
+    @each $break in $gridBreakpoints {
+
+        $breakName  : nth($break, 1);
+        $breakValue : nth($break, 2);
 
         @include MQ($breakValue) {
             @include marginsLoop($n, $container, $breakName);

@@ -62,9 +62,9 @@ $hidden                 : cache;
 
 $gridBreakpoints : (
 
-    "smartphones"   : "all and (max-width: 767px)",
-    "tablettes"     : "all and (min-width: 767px) and (max-width: 991px)",
-    "ecransMoyens"  : "all and (min-width: 992px) and (max-width: 1199px)",
-    "ecransLarges"  : "all and (min-width: 1200px)"
+    "smartphones"    "all and (max-width: 767px)",
+    "tablettes"      "all and (min-width: 767px) and (max-width: 991px)",
+    "ecransMoyens"   "all and (min-width: 992px) and (max-width: 1199px)",
+    "ecransLarges"   "all and (min-width: 1200px)"
 
 )

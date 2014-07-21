@@ -43,9 +43,9 @@ $grids : (10, 12, 16) !default;
  */
 $gridBreakpoints : (
 
-    "smartphones"   : "all and (max-width: 767px)",
-    "tablets"       : "all and (min-width: 767px) and (max-width: 991px)",
-    "mediumScreens" : "all and (min-width: 992px) and (max-width: 1199px)",
-    "bigScreens"    : "all and (min-width: 1200px)"
+    "smartphones"    "all and (max-width: 767px)",
+    "tablets"        "all and (min-width: 767px) and (max-width: 991px)",
+    "mediumScreens"  "all and (min-width: 992px) and (max-width: 1199px)",
+    "bigScreens"     "all and (min-width: 1200px)"
 
 ) !default;

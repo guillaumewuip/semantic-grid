@@ -14,7 +14,10 @@
        @include flexContainer();
     }
     //For all breakpoints
-    @each $breakName, $breakValue in $gridBreakpoints {
+    @each $break in $gridBreakpoints {
+
+        $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
         @include MQ($breakValue) {
 
             [#{ $breakName }][#{ $breakName }~="#{ $container }"] {
@@ -90,7 +93,10 @@
     }
 }
 
-@each $breakName, $breakValue in $gridBreakpoints {
+@each $break in $gridBreakpoints {
+
+    $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
 
     @include MQ($breakValue) {
 
@@ -130,7 +136,10 @@
     @include prefixr(flex-wrap, wrap-reverse);
 }
 
-@each $breakName, $breakValue in $gridBreakpoints {
+@each $break in $gridBreakpoints {
+
+    $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
 
     @include MQ($breakValue) {
 
@@ -172,7 +181,10 @@
     @include prefixr(justify-content, space-around);
 }
 
-@each $breakName, $breakValue in $gridBreakpoints {
+@each $break in $gridBreakpoints {
+
+    $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
 
     @include MQ($breakValue) {
 
@@ -229,7 +241,10 @@
     @include prefixr(align-self, baseline);
 }
 
-@each $breakName, $breakValue in $gridBreakpoints {
+@each $break in $gridBreakpoints {
+
+    $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
 
     @include MQ($breakValue) {
 
@@ -290,7 +305,10 @@
     @include prefixr(align-content, space-around);
 }
 
-@each $breakName, $breakValue in $gridBreakpoints {
+@each $break in $gridBreakpoints {
+
+    $breakName  : nth($break, 1);
+    $breakValue : nth($break, 2);
 
     @include MQ($breakValue) {
 
