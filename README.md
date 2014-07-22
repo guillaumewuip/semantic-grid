@@ -157,6 +157,15 @@ By default, semanticGrid comes with this devices detection :
 
 [You could add your own]().
 
+### Responsive classes
+
+You could use `.elementdisplayed` and `.elementhidden` classes and attributes to show / hide anything according to the current resolution
+
+```html
+<div class="elementhidden" tablets="elementdisplayed">Will be shown only on tablets</div>
+
+```
+
 ## Grid
 
 Define a grid. By default, semanticGrids comes with 10, 12 and 16 columns wide grids. [Add one](#build-your-own) if you need to !
@@ -432,3 +441,6 @@ In `sass/semanticGrid.scss`, simply udpate the language import with `@import 'la
 Then, [compile SASS](http://sass-lang.com/install) with the command `npm install; grunt` if you have node and npm installed.
 
 That's it ! You've built your own grid system !
+
+# Licence
+semanticGrid is licensed under The MIT License.
